@@ -4,11 +4,11 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\PsotSearch */
+/* @var $model app\models\PostSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="psot-search">
+<div class="post-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
@@ -24,8 +24,6 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'created_at') ?>
 
     <?= $form->field($model, 'updated_at') ?>
-
-    <?php // echo $form->field($model, 'new_tablecol') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

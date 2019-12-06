@@ -35,25 +35,19 @@ AppAsset::register($this);
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
+    $navItem = [
+        ['label' => 'Majas', 'url' => ['/site/index']],
+        ['label' => 'Par mums', 'url' => ['/site/about']],
+        ['label' => 'Kontakti', 'url' => ['/site/contact']],
+    ];
+    if(Yii::$app->user->isGuest){
+        array_push($navItem, ['label' => 'Ielogoties', 'url' => ['/site/login']], ['label' => 'Reģistrēties', 'url' => ['/site/register']]);
+    }else{
+        array_push($navItem,'<li>'. Html::beginForm(['/site/logout'], 'post'). Html::submitButton('Logout (' . Yii::$app->user->identity->username . ')',['class' => 'btn btn-link logout']).Html::endForm().'</li>');
+    }
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
-            Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
-            ) : (
-                '<li>'
-                . Html::beginForm(['/site/logout'], 'post')
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
-                    ['class' => 'btn btn-link logout']
-                )
-                . Html::endForm()
-                . '</li>'
-            )
-        ],
+        'items' => $navItem
     ]);
     NavBar::end();
     ?>

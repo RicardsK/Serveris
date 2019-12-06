@@ -4,12 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Psot;
+use app\models\Post;
 
 /**
- * PsotSearch represents the model behind the search form of `app\models\Psot`.
+ * PostSearch represents the model behind the search form of `app\models\Post`.
  */
-class PsotSearch extends Psot
+class PostSearch extends Post
 {
     /**
      * {@inheritdoc}
@@ -18,7 +18,7 @@ class PsotSearch extends Psot
     {
         return [
             [['id'], 'integer'],
-            [['title', 'description', 'created_at', 'updated_at', 'new_tablecol'], 'safe'],
+            [['title', 'description', 'created_at', 'updated_at'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class PsotSearch extends Psot
      */
     public function search($params)
     {
-        $query = Psot::find();
+        $query = Post::find();
 
         // add conditions that should always apply here
 
@@ -64,8 +64,7 @@ class PsotSearch extends Psot
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title])
-            ->andFilterWhere(['like', 'description', $this->description])
-            ->andFilterWhere(['like', 'new_tablecol', $this->new_tablecol]);
+            ->andFilterWhere(['like', 'description', $this->description]);
 
         return $dataProvider;
     }

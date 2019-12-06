@@ -5,23 +5,22 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "psot".
+ * This is the model class for table "post".
  *
  * @property int $id
  * @property string|null $title
  * @property string|null $description
  * @property string|null $created_at
  * @property string|null $updated_at
- * @property string|null $new_tablecol
  */
-class Psot extends \yii\db\ActiveRecord
+class Post extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'psot';
+        return 'post';
     }
 
     /**
@@ -41,9 +40,8 @@ class Psot extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-
             'title' => 'Title',
-            'description' => 'Description',
+            'description' => 'Description'
         ];
     }
 }
